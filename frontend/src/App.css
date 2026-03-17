@@ -1,0 +1,105 @@
+/* Main layout */
+
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:#0f172a;
+  color:white;
+}
+
+.container{
+  display:flex;
+  min-height:100vh;
+}
+
+.intro{
+  max-width:900px;
+  margin:auto;
+  margin-bottom:20px;
+  padding:15px 25px;
+  background:#0f172a;
+  border-radius:10px;
+  border:1px solid #1e40af;
+  color:#cbd5f5;
+}
+
+.intro ul{
+  text-align:left;
+  margin-left:20px;
+}
+
+.intro li{
+  margin:4px 0;
+}
+
+/* Sidebar */
+
+.sidebar{
+  width:260px;
+  background:linear-gradient(180deg,#0f172a,#1e293b);
+  padding:20px;
+  overflow-y:auto;
+  border-right:2px solid #1d4ed8;
+}
+
+.sidebar h3{
+  color:#60a5fa;
+  margin-top:18px;
+  margin-bottom:6px;
+  font-size:16px;
+}
+
+/* Buttons */
+
+.sidebar button{
+  width:100%;
+  padding:8px;
+  margin:4px 0;
+  border:none;
+  border-radius:6px;
+  background:#1e3a8a;
+  color:white;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+.sidebar button:hover{
+  background:#2563eb;
+  transform:scale(1.02);
+}
+
+/* Workspace */
+
+.workspace{
+  flex:1;
+  padding:30px;
+  text-align:center;
+  background:#020617;
+}
+
+/* Upload */
+
+.workspace input{
+  padding:6px;
+  background:#1e293b;
+  color:white;
+  border:1px solid #2563eb;
+  border-radius:5px;
+}
+
+/* Image */
+
+.workspace img{
+  margin-top:15px;
+  border-radius:10px;
+  box-shadow:0px 0px 20px rgba(37,99,235,0.6);
+}
+
+/* Histogram container */
+
+.histogram{
+  margin-top:20px;
+  background:#0f172a;
+  padding:15px;
+  border-radius:10px;
+}
