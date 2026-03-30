@@ -1,53 +1,45 @@
-function Sidebar({ processImage, resetImage, downloadImage }) {
+function Sidebar({
+  sections,
+  selectedOperation,
+  onSelectOperation,
+  resetImage,
+  undoLast,
+  downloadImage,
+  canUndo,
+  disabled,
+}) {
   return (
     <div className="sidebar">
+      <h2>Toolbox</h2>
+      <p className="sidebar-subtitle">Choose an operation, tune parameters, then apply.</p>
 
-      <h3>Intensity</h3>
-      <button onClick={() => processImage("grayscale")}>Grayscale</button>
-      <button onClick={() => processImage("negative")}>Negative</button>
-      <button onClick={() => processImage("brightness")}>Brightness</button>
-      <button onClick={() => processImage("contrast")}>Contrast</button>
-      <button onClick={() => processImage("gamma")}>Gamma</button>
+      {sections.map((section) => (
+        <div key={section.title} className="section-block">
+          <h3>{section.title}</h3>
+          {section.operations.map((operation) => (
+            <button
+              key={operation.key}
+              className={selectedOperation?.key === operation.key ? "is-active" : ""}
+              onClick={() => onSelectOperation(operation)}
+            >
+              <span>{operation.label}</span>
+              <small>{operation.description}</small>
+            </button>
+          ))}
+        </div>
+      ))}
 
-      <h3>Histogram</h3>
-      <button onClick={() => processImage("histogram_equalization")}>
-        Histogram Equalization
-      </button>
-
-      <h3>Spatial Filters</h3>
-      <button onClick={() => processImage("mean")}>Mean</button>
-      <button onClick={() => processImage("gaussian")}>Gaussian</button>
-      <button onClick={() => processImage("median")}>Median</button>
-      <button onClick={() => processImage("sharpen")}>Sharpen</button>
-      <button onClick={() => processImage("laplacian")}>Laplacian</button>
-
-      <h3>Edge Detection</h3>
-      <button onClick={() => processImage("sobel")}>Sobel</button>
-      <button onClick={() => processImage("prewitt")}>Prewitt</button>
-      <button onClick={() => processImage("roberts")}>Roberts</button>
-      <button onClick={() => processImage("canny")}>Canny</button>
-
-      <h3>Noise</h3>
-      <button onClick={() => processImage("gaussian_noise")}>Gaussian Noise</button>
-      <button onClick={() => processImage("salt_pepper")}>Salt & Pepper</button>
-      <button onClick={() => processImage("speckle")}>Speckle</button>
-
-      <h3>Morphology</h3>
-      <button onClick={() => processImage("erosion")}>Erosion</button>
-      <button onClick={() => processImage("dilation")}>Dilation</button>
-      <button onClick={() => processImage("opening")}>Opening</button>
-      <button onClick={() => processImage("closing")}>Closing</button>
-
-      <h3>Frequency</h3>
-      <button onClick={() => processImage("fourier")}>Fourier</button>
-      <button onClick={() => processImage("lowpass")}>Low Pass</button>
-      <button onClick={() => processImage("highpass")}>High Pass</button>
-
-      <hr/>
-
-      <button onClick={resetImage}>Reset</button>
-      <button onClick={downloadImage}>Download</button>
-
+      <div className="actions">
+        <button onClick={undoLast} disabled={!canUndo}>
+          Undo Last
+        </button>
+        <button onClick={resetImage} disabled={disabled}>
+          Reset to Original
+        </button>
+        <button onClick={downloadImage} disabled={disabled}>
+          Download PNG
+        </button>
+      </div>
     </div>
   );
 }

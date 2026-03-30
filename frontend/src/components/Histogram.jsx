@@ -28,7 +28,7 @@ function Histogram({ data }) {
       {
         label: "Pixel Intensity",
         data: data,
-        backgroundColor: "#3b82f6",   // blue bars
+        backgroundColor: "#1d6b71",
         borderWidth: 0
       }
     ]
@@ -39,13 +39,13 @@ function Histogram({ data }) {
     plugins: {
       legend: {
         labels: {
-          color: "#e2e8f0"   // legend text color
+          color: "#2f2b24"
         }
       },
       title: {
         display: true,
         text: "Image Histogram",
-        color: "#60a5fa",
+        color: "#9f3f07",
         font: {
           size: 18
         }
@@ -54,18 +54,18 @@ function Histogram({ data }) {
     scales: {
       x: {
         ticks: {
-          color: "#cbd5f5"   // x-axis text
+          color: "#4a4740"
         },
         grid: {
-          color: "rgba(255,255,255,0.1)"  // light grid
+          color: "rgba(31,29,25,0.12)"
         }
       },
       y: {
         ticks: {
-          color: "#cbd5f5"   // y-axis text
+          color: "#4a4740"
         },
         grid: {
-          color: "rgba(255,255,255,0.1)"
+          color: "rgba(31,29,25,0.12)"
         }
       }
     }
@@ -74,11 +74,12 @@ function Histogram({ data }) {
   return (
     <div
       style={{
-        width: "700px",
-        background: "#020617",
+        width: "100%",
+        marginTop: "18px",
+        background: "#fff",
         padding: "20px",
-        borderRadius: "10px",
-        boxShadow: "0px 0px 15px rgba(59,130,246,0.4)"
+        borderRadius: "14px",
+        border: "1px solid #d3c8ae"
       }}
     >
       <Bar data={chartData} options={options} />

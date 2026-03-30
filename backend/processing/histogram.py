@@ -21,3 +21,14 @@ def histogram_equalization(img):
     equalized = cv2.equalizeHist(img)
 
     return equalized
+
+
+def clahe_equalization(img, clip_limit=2.0, tile_grid_size=8):
+
+    if len(img.shape) == 3:
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+
+    tile = max(1, int(tile_grid_size))
+    clahe = cv2.createCLAHE(clipLimit=float(clip_limit), tileGridSize=(tile, tile))
+
+    return clahe.apply(img)

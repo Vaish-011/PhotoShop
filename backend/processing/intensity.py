@@ -3,7 +3,7 @@ import numpy as np
 
 
 def grayscale(img):
-    return cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
 
 def negative(img):
@@ -25,6 +25,7 @@ def contrast(img, alpha=1.5):
 
 
 def gamma_correction(img, gamma=1.5):
+    gamma = max(gamma, 0.01)
     invGamma = 1.0 / gamma
     table = np.array([
         ((i / 255.0) ** invGamma) * 255

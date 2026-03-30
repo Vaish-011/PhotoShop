@@ -11,12 +11,16 @@ def fourier_spectrum(img):
 
     magnitude = 20 * np.log(np.abs(fshift) + 1)
 
-    magnitude = np.uint8(255 * magnitude / np.max(magnitude))
+    max_value = np.max(magnitude)
+    if max_value == 0:
+        return np.zeros_like(gray, dtype=np.uint8)
+
+    magnitude = np.uint8(255 * magnitude / max_value)
 
     return magnitude
 
 
-def low_pass_filter(img):
+def low_pass_filter(img, radius=50):
 
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
@@ -28,7 +32,7 @@ def low_pass_filter(img):
 
     mask = np.zeros((rows, cols), np.uint8)
 
-    r = 50
+    r = max(1, min(int(radius), min(crow, ccol) - 1))
     mask[crow-r:crow+r, ccol-r:ccol+r] = 1
 
     fshift = fshift * mask
@@ -42,7 +46,7 @@ def low_pass_filter(img):
 
 
 
-def high_pass_filter(img):
+def high_pass_filter(img, radius=30):
 
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
@@ -54,7 +58,7 @@ def high_pass_filter(img):
 
     mask = np.ones((rows, cols), np.uint8)
 
-    r = 30
+    r = max(1, min(int(radius), min(crow, ccol) - 1))
     mask[crow-r:crow+r, ccol-r:ccol+r] = 0
 
     fshift = fshift * mask

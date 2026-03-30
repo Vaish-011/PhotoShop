@@ -2,26 +2,21 @@ import numpy as np
 import cv2
 
 
-def gaussian_noise(img):
+def gaussian_noise(img, sigma=25):
 
     row, col, ch = img.shape
 
-    mean = 0
-    sigma = 25
-
-    gauss = np.random.normal(mean, sigma, (row, col, ch))
-    noisy = img + gauss
+    gauss = np.random.normal(0, sigma, (row, col, ch))
+    noisy = img.astype(np.float32) + gauss
 
     noisy = np.clip(noisy, 0, 255)
 
     return noisy.astype(np.uint8)
 
 
-def salt_pepper_noise(img):
+def salt_pepper_noise(img, prob=0.03):
 
     noisy = np.copy(img)
-
-    prob = 0.05
 
     # salt
     salt = np.random.rand(*img.shape[:2]) < prob
@@ -34,13 +29,13 @@ def salt_pepper_noise(img):
     return noisy
 
 
-def speckle_noise(img):
+def speckle_noise(img, intensity=0.2):
 
     row, col, ch = img.shape
 
-    gauss = np.random.randn(row, col, ch)
+    gauss = np.random.randn(row, col, ch) * intensity
 
-    noisy = img + img * gauss
+    noisy = img.astype(np.float32) + img.astype(np.float32) * gauss
 
     noisy = np.clip(noisy, 0, 255)
 
