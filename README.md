@@ -227,18 +227,10 @@ PhotoShop/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── TEACHERS_GUIDE.md         # Teaching instructions
 └── README.md                 # This file
 ```
 
-## For Educators
 
-See [TEACHERS_GUIDE.md](TEACHERS_GUIDE.md) for:
-- Teaching strategies
-- Sample classroom scenarios
-- Assessment ideas
-- Feature usage tips
-- Preset explanations
 
 ## Teaching Scenarios
 
@@ -280,33 +272,8 @@ See [TEACHERS_GUIDE.md](TEACHERS_GUIDE.md) for:
 - **Memory**: Efficient numpy operations
 - **Scalability**: Can handle batch processing mode (future feature)
 
-## Troubleshooting
 
-### Backend won't start
-```bash
-pip install -r requirements.txt  # Ensure dependencies
-python app.py  # Check for port 5000 conflicts
-```
 
-### Frontend shows "Cannot connect to backend"
-```bash
-# Verify backend is running
-curl http://localhost:5000/health
-# Should return: {"status": "ok"}
-```
-
-### Images not processing
-- Check file format (PNG, JPG supported)
-- Ensure image is under 10MB
-- Try with a different image
-- Check browser console for errors
-
-## Browser Support
-
-- Chrome/Chromium 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
 
 ## Future Roadmap
 
@@ -320,22 +287,6 @@ curl http://localhost:5000/health
 - [ ] Undo/Redo stack visualization
 - [ ] Video processing support
 - [ ] Real-time webcam input
-
-## Contributing
-
-This project is designed for educational use. Suggestions for improvement are welcome!
-
-## License
-
-Educational use. See institution policies for distribution.
-
-## Support
-
-For issues or questions:
-1. Check TEACHERS_GUIDE.md
-2. Review sample workflows
-3. Test with different images
-4. Check browser console for errors
 
 ---
 
